@@ -1,0 +1,10 @@
+// _variables.scss
+$colorGreen: rgb(85, 158, 84);
+$colorPurple: rgb(154, 7, 148);
+$colorOrange: rgb(251, 169, 10);
+$spacing-md: 16px;
+
+@mixin heading {
+  font-weight: 600;
+  margin-bottom: $spacing-md;
+}

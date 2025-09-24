@@ -1,0 +1,315 @@
+@use './variables' as v;
+
+// By Aristeu Escobar
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height: 150px;
+  --nav-height: 42px;
+  --footer-height: 40px;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(243, 253, 243);
+}
+
+h1, h2 {
+  text-align: left;
+  line-height: var(--header-height);
+  margin: 0;
+}
+
+/* Layout para telas GRANDES usando grid areas */
+@media (min-width: 500px) {
+  .wrapper {
+    display: grid;
+    grid-template:
+      "hd hd hd hd hd hd" var(--header-height)
+      "na na na na na na" var(--nav-height)
+      "le ma ma ma ma ri" minmax(400px, auto)
+      "fo fo fo fo fo fo" var(--footer-height)
+      / 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    height: auto;
+    row-gap: 0;
+    column-gap: 8px;
+  }
+
+  .header {
+    grid-area: hd;
+    height: var(--header-height);
+    width: 100%;
+
+    > h1 {
+      font-size: 80px;
+    }
+  }
+
+  .mobnav {
+    display: none;
+  }
+
+  .topnav {
+    grid-area: na;
+    position: sticky;
+    top: var(--header-height);
+    height: var(--nav-height);
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    color: v.$colorGreen;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: none;
+    background-color: rgba(251, 169, 10, 0.2);
+    border-top: 2px solid v.$colorOrange;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    > div {
+      margin: 0 10px;
+      padding: 0 10px;
+    }
+
+    a {
+      float: left;
+      display: block;
+      font-weight: normal;
+      color: v.$colorPurple;
+      width: 80px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        background-color: v.$colorOrange;
+      }
+
+      &.active {
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+
+  .main-content {
+    grid-area: ma;
+    margin-top: 0;
+  }
+
+  .left-side {
+    grid-area: le;
+    padding-top: 0;
+    background-color: rgb(243, 253, 243);
+  }
+
+  .right-side {
+    grid-area: ri;
+    margin: 0;
+    background-color: rgb(243, 253, 243);
+  }
+
+  .footer {
+    grid-area: fo;
+    position: sticky;
+    bottom: 0;
+    background-image: linear-gradient(v.$colorPurple, rgb(102, 4, 98));
+    text-align: center;
+  }
+}
+
+/* Layout para telas PEQUENAS usando linhas e colunas */
+@media (max-width: 499px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: var(--header-height) auto minmax(40px, auto) auto 40px;
+
+    width: 100%;
+    height: auto;
+    gap: 0;
+    overflow: auto;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    grid-row: 1;
+    width: 100%;
+    height: var(--header-height);
+
+    > h1 {
+      font-size: 65px;
+    }
+  }
+
+  .topnav {
+    display: none;
+  }
+
+  .mobnav {
+    grid-row: 2;
+    position: sticky;
+    top: var(--header-height);
+    height: auto;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    background-color: rgba(251, 169, 10, 0.2);
+    color: v.$colorGreen;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: none;
+    border-top: 2px solid v.$colorOrange;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    > div {
+      margin: 0 10px;
+      padding: 0 10px;
+    }
+
+    a {
+      float: left;
+      display: block;
+      font-weight: normal;
+      color: v.$colorPurple;
+      width: 80px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        background-color: v.$colorOrange;
+      }
+
+      &.active {
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+
+  .main-content {
+    grid-row: 3;
+    padding: 0 0.2em 0 0.3em;
+  }
+
+  .left-side {
+    grid-row: 4;
+  }
+
+  div#ae-avatar {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    width: 55%;
+  }
+
+  .right-side {
+    display: none;
+  }
+
+  .footer {
+    grid-row: 5;
+    position: sticky;
+    bottom: 0;
+    background-image: linear-gradient(v.$colorPurple, rgb(102, 4, 98));
+    text-align: center;
+  }
+}
+
+/* Comuns */
+.main-content {
+  background-color: rgb(243, 253, 243);
+
+  h1, h2, h4, h5, h6 {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 87.5;
+    color: black;
+    line-height: normal;
+  }
+}
+
+.header {
+  position: sticky;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  background-image: linear-gradient(rgb(102, 4, 98), v.$colorPurple);
+
+  > h1 {
+    @include v.heading;
+    font-family: "Irish Grover", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    margin: 0;
+    color: v.$colorGreen;
+    text-shadow: 4px 6px 8px black;
+  }
+}
+
+.left-side {
+  background-color: rgb(243, 253, 243);
+  z-index: -1;
+
+  img {
+    border-radius: 0;
+    filter: sepia(1);
+    opacity: 0.80;
+    z-index: -1;
+
+    &:hover {
+      filter: none;
+    }
+  }
+}
+
+div#ae-avatar {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: 75%;
+}
