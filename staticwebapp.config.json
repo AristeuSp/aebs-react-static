@@ -5,8 +5,8 @@
     "mimeTypes": {
         ".js": "text/javascript",
         ".mjs": "text/javascript",
-        ".tsx": "text/typescript",
-        ".ts": "text/typescript"
+        ".tsx": "text/javascript",
+        ".ts": "text/javascript"
     },
     "responseOverrides": {
         "404": {
