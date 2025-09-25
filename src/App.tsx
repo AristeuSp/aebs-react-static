@@ -18,8 +18,7 @@ const Home = () => {
     return (
         <div>
             <h2>Home Page</h2>
-            <button onClick={() =>
-                navigate("/contact")}>Go to Contact</button>
+            <button onClick={() => navigate("/contact")}>Go to Contact</button>
             <h2>Meu F**cking Template</h2>
         </div>
     );
