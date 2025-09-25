@@ -1,5 +1,16 @@
 {
     "navigationFallback": {
         "rewrite": "/index.html"
+    },
+    "mimeTypes": {
+        ".js": "text/javascript",
+        ".mjs": "text/javascript",
+        ".tsx": "text/typescript",
+        ".ts": "text/typescript"
+    },
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/index.html"
+        }
     }
 }
