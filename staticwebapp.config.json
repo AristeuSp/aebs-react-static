@@ -1,5 +1,34 @@
 {
     "navigationFallback": {
         "rewrite": "/index.html"
-    }
+    },
+    "mimeTypes": {
+        ".js": "text/javascript",
+        ".mjs": "text/javascript", 
+        ".jsx": "text/javascript",
+        ".ts": "text/javascript",
+        ".tsx": "text/javascript",
+        ".json": "application/json",
+        ".css": "text/css",
+        ".html": "text/html"
+    },
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/index.html"
+        }
+    },
+    "routes": [
+        {
+            "route": "*.js",
+            "headers": {
+                "Content-Type": "text/javascript"
+            }
+        },
+        {
+            "route": "*.mjs", 
+            "headers": {
+                "Content-Type": "text/javascript"
+            }
+        }
+    ]
 }
